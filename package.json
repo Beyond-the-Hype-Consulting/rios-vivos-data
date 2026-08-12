@@ -1,0 +1,13 @@
+{
+  "name": "rios-vivos-data",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "refresh:snirh": "node scripts/fetch-reservoir-status.mjs",
+    "validate": "node scripts/validate-snapshot.mjs"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}
