@@ -325,8 +325,9 @@ if (checkAccess) {
       console.log(`[${position + 1}/${candidates.length}] ${code} · ${status.current.storagePercent?.toFixed(1) ?? "—"}%`);
       return status;
     } catch (error) {
-      failures.push({ code, name: feature.properties.albufeira, error: error instanceof Error ? error.message : String(error) });
-      console.warn(`[${position + 1}/${candidates.length}] ${code} · indisponível`);
+      const message = error instanceof Error ? error.message : String(error);
+      failures.push({ code, name: feature.properties.albufeira, error: message });
+      console.warn(`[${position + 1}/${candidates.length}] ${code} · indisponível · ${message}`);
       return null;
     }
   })).filter(Boolean);
@@ -347,3 +348,4 @@ if (checkAccess) {
   await writeFile(OUTPUT, `${JSON.stringify(output, null, 2)}\n`, "utf8");
   console.log(`Gravado ${statuses.length} leituras em ${OUTPUT.pathname}.`);
 }
+
